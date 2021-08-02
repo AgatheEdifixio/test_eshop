@@ -34,23 +34,6 @@ export class ProductComponent implements OnInit {
     )
   }
 
-
-
-/*   addToCartwww(id: number) {
-    console.log(" addToCart() id", id);
-    this.cart.push(this.products[id]);
-    console.log("this.products[0]", this.products[id])
-  } */
-
-/*   addToCartss(id: number) {
-  
-    let object = this.products[id]
-    console.log(" addToCart() object", object);
-    localStorage.setItem('mesObjet', JSON.stringify(object));
-    this.cart.push(this.products[id]);
-
-  } */
-
   addToCart(id: number){
     let object = this.products[id]
     console.log(" a() object", object);
