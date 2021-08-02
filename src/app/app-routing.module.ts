@@ -1,13 +1,13 @@
 
-import { CartComponent } from './cart/cart.component';
-import { ListOfProductComponent } from './list-of-product/list-of-product.component';
 
+import { CartComponent } from './cart/cart.component';
+import { ProductComponent } from './product/product.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
-  { path: 'products', component: ListOfProductComponent },
+  { path: 'products', component: ProductComponent },
 ];
 
 @NgModule({

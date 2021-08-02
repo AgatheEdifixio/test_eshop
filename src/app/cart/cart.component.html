@@ -1,1 +1,8 @@
-<p>cart works!</p>
+<div>
+    <h3>dans le panier</h3>
+    <ul *ngFor="let c of cart"> 
+        {{ c.title }}
+        {{ c.descrition }}  
+        <button (click)="remove()">remove</button> 
+    </ul>
+</div>

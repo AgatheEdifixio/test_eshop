@@ -1,0 +1,11 @@
+
+
+<div>
+    <ul *ngFor="let p of products; let i = index;">
+        {{ p.title }}
+        {{ p.descrition }}  
+        <button (click)="addToCart(i)">add to cart</button> 
+    </ul>
+
+
+
