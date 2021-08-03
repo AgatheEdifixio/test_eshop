@@ -1,0 +1,32 @@
+.products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .product-card {
+    padding: 2%;
+    flex-grow: 1;
+    flex-basis: 16%;
+  
+    display: flex; /* so child elements can use flexbox stuff too! */
+  }
+
+  .product-info {
+    margin-top: auto;
+  }
+
+/*   // mettre le css dans le style général  */
+  .product-image img {
+    max-width: 100%;
+    width: 100px;
+  }
+
+/*   faire media query pour rendre responsive 
+  => 5 produit max par ligne  */
+
+/*   @media (max-width: 920px) {
+    .product-card {
+      flex: 1 21%;
+    }
+  } */
+

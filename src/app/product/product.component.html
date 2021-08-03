@@ -1,11 +1,12 @@
-
-
-<div>
-    <ul *ngFor="let p of products; let i = index;">
-        {{ p.title }}
-        {{ p.descrition }}  
-        <button (click)="addToCart(i)">add to cart</button> 
-    </ul>
-
-
-
+<section class="products">
+    <div class="product-card">
+        <ul *ngFor="let p of products; let i = index;" class="product-info">
+            <div class="product-image">
+                <img src="{{ p.img }}">
+            </div>
+            <h4>{{ p.title }}</h4>
+            <div>{{ p.descrition }}</div>
+            <button (click)="addToCart(i)">add to cart</button>
+        </ul>
+    </div>
+</section>

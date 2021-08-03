@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
   constructor(private productService : ProductService) { }
 
   cart: Products[] = [];
+  cartLenght: number | any;
 
   ngOnInit(): void {
     console.log("ngOninit cart")
@@ -20,6 +21,7 @@ export class CartComponent implements OnInit {
       (response)=> 
       {
         this.cart = response;
+        this.cartLenght = response.length;
       },
       (error)=>
       {

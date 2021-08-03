@@ -36,7 +36,7 @@ export class ProductComponent implements OnInit {
 
   addToCart(id: number){
     let object = this.products[id]
-    console.log(" a() object", object);
+    //console.log(" a() object", object);
 
     this.productService.addProduct(object);
   }
