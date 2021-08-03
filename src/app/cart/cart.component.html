@@ -2,9 +2,7 @@
     <h3>dans le panier</h3>
     <p *ngIf="cartLenght == 0">cart empty</p>
     <ul *ngFor="let c of cart; let i = index;"> 
-      <!--   <div class="product-image"> -->
             <img class="product-image" src="{{ c.img }}">
-       <!--  </div> -->
         {{ c.title }}
         {{ c.descrition }}  
         <button (click)="onDelete(i)">remove</button> 

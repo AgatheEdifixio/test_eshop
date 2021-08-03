@@ -39,6 +39,7 @@ export class ProductComponent implements OnInit {
     //console.log(" a() object", object);
 
     this.productService.addProduct(object);
+    window.location.reload();
   }
 
 

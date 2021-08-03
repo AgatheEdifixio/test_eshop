@@ -19,7 +19,7 @@ export class ProductService {
   url: string = "http://localhost:3000/products";
   cartUrl: string = "http://localhost:3000/cart";
 
-
+//penser a bien décrire les fonction surtout si c'est des loops 
   getProducts(): Observable<Products[]> {
     return this.http.get<Products[]>("http://localhost:3000/products")
   }
@@ -27,6 +27,23 @@ export class ProductService {
   getCart(): Observable<Products[]> {
     return this.http.get<Products[]>("http://localhost:3000/cart")
   }
+
+  getCart2(){
+    return new Promise((resolve, reject) => {
+      this.http.get<Products[]>("http://localhost:3000/cart").subscribe(res =>
+      { resolve(res.length);
+      },
+      error => {
+        reject(error)
+      });
+    });
+   
+  }
+
+/*   getCartLenght(){
+  this.getCart()
+  } */
+
 
 
   //ajouter le produit : doit pouvoir en ajouter autant qu'il veut 
@@ -47,8 +64,8 @@ export class ProductService {
     this.http.delete(this.cartUrl + '/' + id).toPromise().then(data => {
       console.log(data);
     });
-
   }
+
 
 
 
