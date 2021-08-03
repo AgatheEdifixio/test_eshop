@@ -28,8 +28,14 @@ export class CartComponent implements OnInit {
     )
   }
 
-  remove(){
-    console.log("remove()");
-  }
+
+    //remplacer object par product pour mieux nommer variables
+    // éattention c'est pas l'id c'etl'index 
+    onDelete(i: number){
+     let product = this.cart[i];
+      //let id = object.id;
+     this.productService.deleteProduct(product.id);
+      
+    }
 
 }

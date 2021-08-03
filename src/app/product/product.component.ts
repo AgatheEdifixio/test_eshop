@@ -38,11 +38,9 @@ export class ProductComponent implements OnInit {
     let object = this.products[id]
     console.log(" a() object", object);
 
-    this.productService.AddProduct(object);
+    this.productService.addProduct(object);
   }
 
-  remove(){
-    console.log("remove()");
-  }
+
 
 }
