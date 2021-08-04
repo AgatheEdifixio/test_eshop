@@ -2,6 +2,7 @@ import { Products } from './../Products';
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -13,35 +14,54 @@ export class ProductComponent implements OnInit {
     private productService: ProductService
   ) { }
 
-  // contiendra la reponse API 
-  products : Products[] = [];
+  products: Products[] = [];
 
-  //contien un tablaau de products 
-  cart: Products[] = [];
+  listProductid: any[] = [];
+  currentlocalStorage: any[] = [];
 
   ngOnInit(): void {
-    //appeler le service pour le get et récupérer les produits 
+    this.getProductFromAPI()
+    /*     this.productService.getProducts().subscribe
+          (
+            (response) => {
+              this.products = response;
+            },
+            (error) => {
+              console.log("error " + error);
+            }
+          ) */
+  }
+
+  getProductFromAPI() {
     this.productService.getProducts().subscribe
-    (
-      (response)=> 
-      {
-        this.products = response;
-      },
-      (error)=>
-      {
-        console.log("error " + error );
-      }
-    )
+      (
+        (response) => {
+          this.products = response;
+        },
+        (error) => {
+          console.log("error " + error);
+        }
+      )
   }
 
-  addToCart(id: number){
-    let object = this.products[id]
-    //console.log(" a() object", object);
+  addToCart(id: number) {
+    this.currentlocalStorage = JSON.parse(localStorage.getItem("listIdProducts") || '{}');
+    if (this.currentlocalStorage.length > 0) {
+      this.listProductid = this.currentlocalStorage;
+    }
 
-    this.productService.addProduct(object);
-    window.location.reload();
+    this.addToLocalStorage(id)
   }
 
+  addToLocalStorage(id: number) {
+    let product = this.products[id]
+    let productId = JSON.stringify(product.id);
+    this.listProductid.push(productId);
+    localStorage.setItem('listIdProducts', JSON.stringify(this.listProductid));
+  }
 
+/*   clearLocal() {
+    localStorage.clear()
+  } */
 
 }

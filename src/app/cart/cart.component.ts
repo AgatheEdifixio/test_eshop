@@ -9,36 +9,52 @@ import { Products } from '../Products';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private productService : ProductService) { }
-
-  cart: Products[] = [];
+  constructor(private productService: ProductService) { }
+  products: Products[] = [];
   cartLenght: number | any;
 
+  idOfProducts: any[] | any;
+  hello: [] | any;
+
   ngOnInit(): void {
-    console.log("ngOninit cart")
-    this.productService.getCart().subscribe
-    (
-      (response)=> 
-      {
-        this.cart = response;
-        this.cartLenght = response.length;
-      },
-      (error)=>
-      {
-        console.log("error " + error );
-      }
-    )
+    this.hello = [];
+    this.getCart();
   }
 
+  getCart() {
+    this.productService.getProducts().subscribe
+      (
+        (response) => {
+          this.products = response;
 
-    //remplacer object par product pour mieux nommer variables
-    // éattention c'est pas l'id c'etl'index 
-    onDelete(i: number){
-     let product = this.cart[i];
-      //let id = object.id;
-     this.productService.deleteProduct(product.id);
-     window.location.reload();
-      
-    }
+          this.idOfProducts = JSON.parse(localStorage.getItem("listIdProducts") || '{}');
 
+          //loop to iterate the array of products ID retrieved from local storage 
+          //and find matching ID of products from db 
+          for (var i = 0, len = this.idOfProducts.length; i < len; i++) {
+            const product = this.products.find(el => el.id == this.idOfProducts[i]);
+            if (product != undefined) {
+              this.hello.push(product);
+            }
+          }
+          // IL FAUDRA surrmenet faire un event emiter pour metre dans plus dynamique 
+          if (this.idOfProducts.length == undefined || this.idOfProducts.length == 0) {
+            this.cartLenght = 0
+          }
+        },
+        (error) => {
+          console.log("error " + error);
+        }
+      )
+  }
+
+  onDelete(i: number) {
+    delete this.idOfProducts[i];
+    var newLocalStorage = this.idOfProducts.filter(function (el: any) {
+      return el != null;
+    });
+
+    localStorage.removeItem("listIdProducts");
+    localStorage.setItem('listIdProducts', JSON.stringify(newLocalStorage));
+  }
 }

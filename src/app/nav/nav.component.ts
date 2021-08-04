@@ -27,7 +27,7 @@ export class NavComponent implements OnInit {
   async getLengthCart(){
     let a = await this.productService.getCart2();
 this.cartLegnth = a;
-    console.log("a", a);
+/*     console.log("a", a); */
 
 
     //this.cartLegnth = a.length;
