@@ -8,18 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
-/*   @Output() */
-
- // eventLength: EventEmitter<number> = new EventEmitter<number>();
-
   products: Products[] = [];
 
   listProductid: any[] = [];
   currentlocalStorage: any[] = [];
 
   cartLenght: number | undefined;
-
 
   constructor(
     private productService: ProductService

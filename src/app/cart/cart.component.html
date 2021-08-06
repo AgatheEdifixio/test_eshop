@@ -1,7 +1,6 @@
 <app-nav [cartLenght]="cartLenght"></app-nav>
 <div>
-    <h3>dans le panier</h3>
-    <p *ngIf="cartLenght == 0">cart empty</p>
+    <h4 *ngIf="cartLenght == 0">Your cart is empty</h4>
     <ul *ngFor="let p of products; let i = index;">
             <img class="product-image" src="{{ p.img }}">
             {{ p.title }}

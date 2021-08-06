@@ -1,6 +1,5 @@
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { Products } from '../Products';
 
 @Component({
   selector: 'app-cart',
@@ -8,8 +7,6 @@ import { Products } from '../Products';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
-  //productsFromAPI: Products[] = [];
   products: [] | any;
 
   idOfProducts: any[] | any;
@@ -29,8 +26,6 @@ export class CartComponent implements OnInit {
     this.productService.getProducts().subscribe
       (
         (response) => {
-        //  this.productsFromAPI = response;
-
           this.idOfProducts = JSON.parse(localStorage.getItem("listIdProducts") || '{}');
 
           //loop to iterate the array of products ID retrieved from local storage 

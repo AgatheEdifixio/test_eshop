@@ -1,6 +1,4 @@
-import { ProductService } from './../services/product.service';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Products } from '../Products';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,13 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  @Input() myFirstInputParameter: string | any;
   @Input() cartLenght: number | undefined;
 
   cartLegnth: any;
 
   constructor(
-    private productService: ProductService,
     private router: Router
   ) { }
 

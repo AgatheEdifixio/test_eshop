@@ -11,8 +11,6 @@ const routes: Routes = [
   { path: '', component: ProductComponent },
 ];
 
-//si route defini mais pas utiliser router : ne marche pas 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
