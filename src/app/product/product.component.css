@@ -12,11 +12,17 @@
 
 .product-info {
   margin-top: auto;
+  text-align: center;
 }
 
 .product-image img {
   max-width: 100%;
   width: 100px;
+} 
+
+.btn-light{
+  margin-top: 10px;
+  font-size: small;
 }
 
 

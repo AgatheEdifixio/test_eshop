@@ -4,7 +4,6 @@
     <ul *ngFor="let p of products; let i = index;">
             <img class="product-image" src="{{ p.img }}">
             {{ p.title }}
-            {{ p.descrition }}
-            <button (click)="onDelete(i, p.id)">remove</button>
+            <button (click)="onDelete(i, p.id)" class="btn btn-danger">remove</button>
     </ul>
 </div>

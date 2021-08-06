@@ -1,6 +1,6 @@
 <app-nav [cartLenght]="cartLenght"></app-nav>
 
-<section class="products">
+ <section class="products">
     <div class="product-card">
         <ul *ngFor="let p of products; let i = index;" class="product-info">
             <div class="product-image">
@@ -8,7 +8,8 @@
             </div>
             <h4>{{ p.title }}</h4>
             <div>{{ p.descrition }}</div>
-            <button  type="button" class="btn btn-info" (click)="addToCart(i)">add to cart</button>
+        
+            <button type="button" class="btn btn-light" (click)="addToCart(i)">ADD TO CART</button>
         </ul>
     </div>
-</section>
+</section> 
