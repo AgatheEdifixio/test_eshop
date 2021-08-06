@@ -1,10 +1,11 @@
+<app-nav [cartLenght]="cartLenght"></app-nav>
 <div>
     <h3>dans le panier</h3>
     <p *ngIf="cartLenght == 0">cart empty</p>
-    <ul *ngFor="let c of hello; let i = index;"> 
-            <img class="product-image" src="{{ c.img }}">
-        {{ c.title }}
-        {{ c.descrition }}  
-        <button (click)="onDelete(i)">remove</button> 
+    <ul *ngFor="let p of products; let i = index;">
+            <img class="product-image" src="{{ p.img }}">
+            {{ p.title }}
+            {{ p.descrition }}
+            <button (click)="onDelete(i, p.id)">remove</button>
     </ul>
 </div>

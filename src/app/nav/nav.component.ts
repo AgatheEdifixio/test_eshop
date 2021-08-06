@@ -1,6 +1,7 @@
 import { ProductService } from './../services/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Products } from '../Products';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -8,31 +9,20 @@ import { Products } from '../Products';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  @Input() myFirstInputParameter: string | any;
+  @Input() cartLenght: number | undefined;
+
+  cartLegnth: any;
 
   constructor(
-    private productService :ProductService
+    private productService: ProductService,
+    private router: Router
   ) { }
 
-  cartLegnth : any; 
-  cart: Products[] = [];
-  cart2: [] = []; 
-
-  // dans le ngoninit du l'app.comp ? 
-  //demander bonne pratique : faire le get length dans service ou dans le oninit de la nav ? 
   ngOnInit(): void {
-    //faire une async
-    this.getLengthCart()
   }
 
-  async getLengthCart(){
-    let a = await this.productService.getCart2();
-this.cartLegnth = a;
-/*     console.log("a", a); */
-
-
-    //this.cartLegnth = a.length;
+  redirect(route: string) {
+    this.router.navigate([route]);
   }
-
-  //faire un eveent Emmiter pour envoyer data en direct cart + 1 ...;
-
 }

@@ -9,35 +9,38 @@ import { Products } from '../Products';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
-  products: Products[] = [];
-  cartLenght: number | any;
+  //productsFromAPI: Products[] = [];
+  products: [] | any;
 
   idOfProducts: any[] | any;
-  hello: [] | any;
+  currentlocalStorage: any[] = [];
+
+  cartLenght: number | undefined;
+
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.hello = [];
+    this.products = [];
     this.getCart();
+    this.getLengtCart();
   }
 
   getCart() {
     this.productService.getProducts().subscribe
       (
         (response) => {
-          this.products = response;
+        //  this.productsFromAPI = response;
 
           this.idOfProducts = JSON.parse(localStorage.getItem("listIdProducts") || '{}');
 
           //loop to iterate the array of products ID retrieved from local storage 
           //and find matching ID of products from db 
           for (var i = 0, len = this.idOfProducts.length; i < len; i++) {
-            const product = this.products.find(el => el.id == this.idOfProducts[i]);
+            const product = response.find(el => el.id == this.idOfProducts[i]);
             if (product != undefined) {
-              this.hello.push(product);
+              this.products.push(product);
             }
           }
-          // IL FAUDRA surrmenet faire un event emiter pour metre dans plus dynamique 
           if (this.idOfProducts.length == undefined || this.idOfProducts.length == 0) {
             this.cartLenght = 0
           }
@@ -48,13 +51,20 @@ export class CartComponent implements OnInit {
       )
   }
 
-  onDelete(i: number) {
-    delete this.idOfProducts[i];
-    var newLocalStorage = this.idOfProducts.filter(function (el: any) {
-      return el != null;
-    });
+  onDelete(index: number, id: string) {
+    this.idOfProducts.splice(index, 1);
+    const newLocalStorage = this.idOfProducts;
 
     localStorage.removeItem("listIdProducts");
     localStorage.setItem('listIdProducts', JSON.stringify(newLocalStorage));
+
+    this.cartLenght = newLocalStorage.length;
+    const indexDeleteProduct = this.products.findIndex((el: any) => el.id == id);
+    this.products.splice(indexDeleteProduct, 1);
+ }
+
+  getLengtCart() {
+    this.currentlocalStorage = JSON.parse(localStorage.getItem("listIdProducts") || '{}');
+    this.cartLenght = this.currentlocalStorage.length;
   }
 }

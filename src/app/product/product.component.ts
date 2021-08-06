@@ -2,7 +2,6 @@ import { Products } from './../Products';
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -10,26 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(
-    private productService: ProductService
-  ) { }
+/*   @Output() */
+
+ // eventLength: EventEmitter<number> = new EventEmitter<number>();
 
   products: Products[] = [];
 
   listProductid: any[] = [];
   currentlocalStorage: any[] = [];
 
+  cartLenght: number | undefined;
+
+
+  constructor(
+    private productService: ProductService
+  ) { }
+
   ngOnInit(): void {
-    this.getProductFromAPI()
-    /*     this.productService.getProducts().subscribe
-          (
-            (response) => {
-              this.products = response;
-            },
-            (error) => {
-              console.log("error " + error);
-            }
-          ) */
+    this.getProductFromAPI();
+    this.getLengtCart()
   }
 
   getProductFromAPI() {
@@ -58,10 +56,12 @@ export class ProductComponent implements OnInit {
     let productId = JSON.stringify(product.id);
     this.listProductid.push(productId);
     localStorage.setItem('listIdProducts', JSON.stringify(this.listProductid));
+    this.cartLenght = this.listProductid.length;
   }
 
-/*   clearLocal() {
-    localStorage.clear()
-  } */
+  getLengtCart() {
+    this.currentlocalStorage = JSON.parse(localStorage.getItem("listIdProducts") || '{}');
+    this.cartLenght = this.currentlocalStorage.length;
+  }
 
 }

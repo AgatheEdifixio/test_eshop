@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'test-eshop';
+/*   cartLength : number | undefined;
+
+  getLength(event: any) {
+    console.log('event', event);
+    this.cartLength = event
+  } */
 }
