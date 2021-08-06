@@ -1,0 +1,40 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "title": "Product 1",
+        "descrition": "description for product 1",
+        "img": "https://www.eau-vive.com/magasin-bio/28052-large_default/citrons.jpg"
+      },
+      {
+        "id": 2,
+        "title": "Product 2",
+        "descrition": "description for product 2",
+        "img": "https://produits.bienmanger.com/34571-0w470h470_Gingembre_Bio.jpg"
+      },
+      {
+        "id": 3,
+        "title": "Product 3",
+        "descrition": "description for product 3",
+        "img": "https://www.lsa-conso.fr/mediatheque/6/8/0/000362086_5.jpg"
+      },
+      {
+        "id": 4,
+        "title": "Product 4",
+        "descrition": "description for product 4",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/d/de/Cinnamomum_verum_spices.jpg"
+      },
+      {
+        "id": 5,
+        "title": "Product 5",
+        "descrition": "description for product 5",
+        "img": "https://www.tiniloo.com/blog/wp-content/uploads/2016/06/envie-de-fraise.jpg"
+      },
+      {
+        "id": 6,
+        "title": "Product 6",
+        "descrition": "description for product 6",
+        "img": "http://www.cuisine-de-bebe.com/wp-content/uploads/la-vanille-pour-b%C3%A9b%C3%A9.jpg"
+      }
+    ]
+  }

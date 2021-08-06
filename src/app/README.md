@@ -17,6 +17,7 @@ the use the command "ng serve" to run the project.
 
 to launch the json server : 
 use the command "json-server --watch db.json"
+and copy paste the file "ProductsJSON.json" in the "db.json" created automatically 
 
 # Technical Stack 
 Angular 12 
